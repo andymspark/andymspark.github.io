@@ -1,10 +1,6 @@
 ---
 layout: page
-title: "About"
+title: "andymspark.github.io"
 ---
 
-### Education
-- B.S. Souel National University Aerospace Engineering
-
-### Interest
-- Data Driven Fluid Dynamics
+# andymspark.github.io
