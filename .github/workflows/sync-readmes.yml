@@ -22,15 +22,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          repos=$(gh repo list andymspark --json name --jq '.[].name')
-          mkdir -p repos
-          for r in $repos; do
-            gh api repos/andymspark/$r/readme \
-              -H "Accept: application/vnd.github.raw" \
-              > repos/$r.md
-            echo -e "---\nlayout: page\ntitle: \"$r\"\n---\n" \
-              | cat - repos/$r.md > temp && mv temp repos/$r.md
-          done
 
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v5
