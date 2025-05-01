@@ -6,3 +6,12 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-github-metadata
+nav:
+  - title: About
+    url: /about/
+  - title: Research
+    url: /research/
+  - title: Publication
+    url: /publication/
+  - title: Archive
+    url: /archive/
