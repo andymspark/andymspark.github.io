@@ -1,5 +1,1 @@
-### About
-
-### Education
-
-### Interest
+# About
