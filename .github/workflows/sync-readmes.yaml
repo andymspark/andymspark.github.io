@@ -1,28 +1,30 @@
 name: Sync READMEs
-on: [push, workflow_dispatch]     # run when you push or manually trigger it
+# allow the GITHUB_TOKEN to push commits
+permissions:
+  contents: write
+
+on:
+  [push, workflow_dispatch]
+
 jobs:
   build:
-    runs-on: ubuntu-latest        # linux runner that executes the steps
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        # 1. check out your site’s code so the Action can modify it
+        # ensure the checkout action reuses the GITHUB_TOKEN for pushes
+        with:
+          persist-credentials: true
 
       - name: Fetch READMEs
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 2. list all your repos
           repos=$(gh repo list andymspark --json name --jq '.[].name')
           mkdir -p repos
-
-          # 3. for each repo, download its README via the GitHub API
           for r in $repos; do
             gh api repos/andymspark/$r/readme \
               -H "Accept: application/vnd.github.raw" \
               > repos/$r.md
-
-            # 4. prepend Jekyll “front matter” so Jekyll knows
-            #    this file becomes a page named /<r>/
             echo -e "---\nlayout: page\ntitle: \"$r\"\n---\n" \
               | cat - repos/$r.md > temp && mv temp repos/$r.md
           done
@@ -30,4 +32,3 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Sync READMEs"
-        # 5. if any repos/*.md changed, commit & push them back to main
