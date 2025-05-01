@@ -1,10 +1,6 @@
 ---
 layout: page
-title: "About"
+title: "andymspark.github.io"
 ---
 
-### Education
-- B.S. Seoul National University Aerospace Engineering
-
-### Interest
-- Data-driven Fluid Dynamics
+# andymspark.github.io
