@@ -2,7 +2,6 @@
 layout: home
 ---
 
-# Projects
 
 {% assign projects = site.github.public_repositories
                      | where_exp:'p','p.fork == false'
