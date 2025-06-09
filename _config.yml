@@ -1,6 +1,11 @@
 title: "Andy Minseo Park"
-name: "Andy Park"
-description: "andymspark@gmail.com"
+
+author:
+  name: "Andy Park"
+  email: "andymspark@gmail.com"
+
+description: > 
+  This page is about...
 
 theme: minima
 
